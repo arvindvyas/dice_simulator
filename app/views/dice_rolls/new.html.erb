@@ -1,0 +1,18 @@
+<h1>Roll Dice</h1>
+<%= form_tag dice_rolls_path, method: :post do %>
+  <p>Number of Dice: <%= text_field_tag "num_dice" %></p>
+  <div id="dice_inputs">
+  </div>
+  <%= submit_tag "Roll" %>
+<% end %>
+
+<script>
+  document.querySelector("[name='num_dice']").addEventListener('input', function() {
+    const numDice = this.value;
+    const diceInputs = document.getElementById('dice_inputs');
+    diceInputs.innerHTML = '';
+    for (let i = 0; i < numDice; i++) {
+      diceInputs.innerHTML += `<p>Number of Sides for Die ${i + 1}: <input type="text" name="sides[]"></p>`;
+    }
+  });
+</script>

@@ -1,0 +1,14 @@
+<h1>Roll Result</h1>
+
+<p><%= @dice_roll.description %></p>
+
+<h2>Details</h2>
+<ul>
+  <% @dice_roll.results.each_with_index do |result, index| %>
+    <li>Die <%= index + 1 %>: <%= result %> (sides: <%= @dice_roll.sides[index] %>)</li>
+  <% end %>
+</ul>
+
+<h3>Total: <%= @dice_roll.total %></h3>
+
+<%= link_to "Roll Again", new_dice_roll_path %>
